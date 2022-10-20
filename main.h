@@ -52,14 +52,14 @@ int op_mod(int a, int b);
 
 typedef struct op
 {
-    char *op;
-    int (*f)(int a, int b);
+	char *op;
+	int (*f)(int a, int b);
 } op_t;
 
 typedef struct fs
 {
-    char *fs;
-    void (*f)(int a);
+	char *fs;
+	void (*f)(int a);
 } format_parser;
 
 #endif /* _MAIN_H_ */
