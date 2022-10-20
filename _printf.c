@@ -19,63 +19,64 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 	 * if the two match process the format specifier then and then
 	 */
     /* initialize stdarg generator macro function */
-    va_list ap;
+va_list ap;
 
-    /*start va_arg Value holders */
-    int __attribute__((unused)) i;
-    double __attribute__((unused)) d;
-    float __attribute__((unused)) f;
-    char __attribute__((unused)) c;
-    char __attribute__((unused)) *str;
-    char __attribute__((unused)) *datatype;
-    char __attribute__((unused)) *pre_fstring;
-    char __attribute__((unused)) *post_fstring;
-    int __attribute__((unused)) end_replace_index;
-    /*End of va_arg Value holders */
+/*start va_arg Value holders */
+int __attribute__((unused)) i;
+double __attribute__((unused)) d;
+float __attribute__((unused)) f;
+char __attribute__((unused)) c;
+char __attribute__((unused)) *str;
+char __attribute__((unused)) *datatype;
+char __attribute__((unused)) *pre_fstring;
+char __attribute__((unused)) *post_fstring;
+int __attribute__((unused)) end_replace_index;
+/*End of va_arg Value holders */
 
-    int __attribute__((unused)) process_string;
-    int curr_str_index = 0;
+int __attribute__((unused)) process_string;
+int curr_str_index = 0;
 
-    int pos_percent_sign = 0;
+int pos_percent_sign = 0;
 
-    int percent_sign_track_index = 0;
-    int process_string_track_index = 0;
+int percent_sign_track_index = 0;
+int process_string_track_index = 0;
 
-    short int flipswitch_percentagesign;
+short int flipswitch_percentagesign;
 
-    int stringlen;
+int stringlen;
 
-    /* Initialize scan flags */
-    flipswitch_percentagesign = 1;
+/* Initialize scan flags */
+flipswitch_percentagesign = 1;
 
 
-    /* check and ensure input string is not NULL*/
-    if (!fmt)
-    {
-        exit(0);
-    }
+/* check and ensure input string is not NULL*/
+if (!fmt)
+{
+	exit(0);
+}
 
-    /* initialize va_arg with va_start */
-    va_start(ap, fmt);
+/* initialize va_arg with va_start */
+va_start(ap, fmt);
 
-    /* Below section should be in a While loop */
+/* Below section should be in a While loop */
 
-    stringlen = _strlen_recursion(fmt);
+stringlen = _strlen_recursion(fmt);
 
-    /* initialize datatype pointer to NULL*/
-    datatype = NULL;
-    pre_fstring = NULL;
-    post_fstring = NULL;
+/* initialize datatype pointer to NULL*/
+datatype = NULL;
+pre_fstring = NULL;
+post_fstring = NULL;
 
-    while(stringlen) /* iterate through the string until you hit the null String*/
-    {
+while(stringlen)
+/* iterate through the string until you hit the null String*/
+{
 	/*printf("string length is %d read %d\n", stringlen, curr_str_index);*/
         /* Scan through the input string and stop at \ or % signs  then check which one comes first
          * based on index*/
 
-        if (flipswitch_percentagesign)
-        {
-            scan_symbol_strchr(fmt, &percent_sign_track_index, '%', &pos_percent_sign);
+if (flipswitch_percentagesign)
+{
+	scan_symbol_strchr(fmt, &percent_sign_track_index, '%', &pos_percent_sign);
             /*printf("position of first percentage sign is %d \n", pos_percent_sign);*/
         }
         /* switch of scanning for percentagesign if percent_sign_track_index is -1*/
