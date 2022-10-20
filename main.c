@@ -10,7 +10,9 @@
 int main(void)
 {
    /* _printf("There is nothing to hold you down\n %");*/
-    _printf("%s%s There is nothing to hold you down\n", "Hello", "World");
+    /*_printf("%s%s There is nothing to hold you down\n", "Hello", "World");*/
+	char val = 'c';
+    _printf("%c There is nothing to hold you down\n", val);
     /*_printf("There is nothing to hold you down %s \n", "Hello");*/
     /*_printf("There is nothing  %s to hold you down %s \n", "Hello", "World");*/
     /*_printf("There is %d nothing to hold you down\n", 22);*/
