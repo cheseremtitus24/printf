@@ -59,7 +59,7 @@ int _printf(char *fmt, ...)
 	/* check and ensure input string is not NULL*/
 	if (!fmt)
 	{
-		exit(0);
+		return (0);
 	}
 
 	/* initialize va_arg with va_start */
