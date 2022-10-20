@@ -3,9 +3,9 @@
 #include <stdarg.h>
 #include "main.h"
 
-
-/*foo(fstring,curr_str_index, va_arg(ap, char );
- */
+/*
+foo(fstring,curr_str_index, va_arg(ap, char );
+*/
 int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 {
 	/*
