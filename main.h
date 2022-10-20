@@ -13,7 +13,8 @@ int _strcmp(char *s1, char *s2);
 int _strchr(char *s, int *scan_index, char c, int *counted);
 char *scan_symbol_strchr(char *s, int *scan_index, char c, int *counted);
 char *_strstr(char *haystack, char *needle);
-void print_number(int n);
+void _print_number(int n);
+void _print_floats(float val);
 void _puts_recursion(char *s);
 int _atoi(char *s);
 /* turn on and off the scanning of forward slashes and percentage sign char's*/
@@ -24,8 +25,8 @@ void switch_on(short int *scan_flag);
 
 /* Main Functions Level 1*/
 int _printf(char *fmt, ...);   /* '...' is C syntax for a variadic function */
-char *_identify_datatype(char *fmt, int pos_percent_sign, char *datatype, int *end_replace_index); 
 
+char *_identify_datatype(char *fmt, __attribute__((unused)) int pos_percent_sign, char *datatype, __attribute__((unused)) int *end_replace_index, __attribute__((unused)) char *pre_string, __attribute__((unused)) char *post_string);
 /* END OF Main Functions Level 1*/
 
 int (*get_op_func(char *s))(int, int);

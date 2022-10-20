@@ -28,6 +28,9 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
     char __attribute__((unused)) c;
     char __attribute__((unused)) *str;
     char __attribute__((unused)) *datatype;
+    char __attribute__((unused)) *pre_fstring;
+    char __attribute__((unused)) *post_fstring;
+    int __attribute__((unused)) end_replace_index;
     /*End of va_arg Value holders */
 
     int __attribute__((unused)) process_string;
@@ -61,6 +64,8 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 
     /* initialize datatype pointer to NULL*/
     datatype = NULL;
+    pre_fstring = NULL;
+    post_fstring = NULL;
 
     while(stringlen) /* iterate through the string until you hit the null String*/
     {
@@ -98,24 +103,39 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 		 * 3. if no match return false and print as is and increment pointer index
 		 * 4. return datatype as NULL
 		 */
-		/*_identify_datatype(fmt, pos_percent_sign, datatype, &end_replace_index);*/ 
-		datatype = "string";
+		
+		datatype = _identify_datatype(fmt, percent_sign_track_index, datatype, &end_replace_index, pre_fstring, post_fstring);
+		/*
+		 * printf("datatype is %s", datatype);
+			break;
+			*/
+		/*datatype = "string";*/
 		if (datatype != NULL)
 		{
 			/*integer*/
-			if (strcmp(datatype, "int") == 0)
+			if (strcmp(datatype, "integer") == 0)
 			{
 				i = va_arg(ap, int);
+				_print_number(i);
+				pos_percent_sign += 2;
+				process_string_track_index = pos_percent_sign;
 			}
 			/*float*/
 			else if(strcmp(datatype, "float") == 0)
 			{
 				f = (float) va_arg(ap, double);
+				_print_floats(f);
+				/*_print_number(f);*/
+				pos_percent_sign += 2;
+				process_string_track_index = pos_percent_sign;
 			}
 			/*character*/
 			else if(strcmp(datatype, "character") == 0)
 			{
 				c = (char) va_arg(ap, int);
+				_putchar(c);
+				pos_percent_sign += 2;
+				process_string_track_index = pos_percent_sign;
 			}
 			/*string*/
 			else if(strcmp(datatype, "string") == 0)
@@ -128,7 +148,6 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 				 */
 				str = va_arg(ap, char *);
 				_puts_recursion(str);
-				/*printf("here");*/
 				pos_percent_sign += 2;
 				process_string_track_index = pos_percent_sign;
 
@@ -137,6 +156,9 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 			else if(strcmp(datatype, "double") == 0)
 			{
 				d = va_arg(ap, double);
+				_print_floats(d);
+				pos_percent_sign += 2;
+				process_string_track_index = pos_percent_sign;
 			}
 		}
 		/* No valid datatype found just print as is*/
