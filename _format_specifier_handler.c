@@ -9,5 +9,5 @@
  */
 char *_format_specifier_handler(char __attribute__((unused)) *fmt, unsigned int __attribute__((unused)) current_string_index, unsigned char __attribute__((unused)) data_type)
 {
- return "";
+return ("");
 }
