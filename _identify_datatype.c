@@ -39,5 +39,5 @@ char *_identify_datatype(char *fmt, __attribute__((unused)) int pos_percent_sign
 		}
 	}
 
- return datatype;
+return (datatype);
 }
