@@ -4,7 +4,14 @@
 #include "main.h"
 
 
-/*foo(fstring,curr_str_index, va_arg(ap, char );
+/**
+ * _printf- prints a formatted string
+ * @fmt: string to print
+ *
+ * Description- outputs a formatted string and
+ * returns the number of characters printed
+ *
+ * Return: integer value
  */
 int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 {
@@ -23,6 +30,7 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 
     /*start va_arg Value holders */
     int __attribute__((unused)) i;
+    unsigned int __attribute__((unused)) ui;
     double __attribute__((unused)) d;
     float __attribute__((unused)) f;
     char __attribute__((unused)) c;
@@ -31,19 +39,20 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
     char __attribute__((unused)) *pre_fstring;
     char __attribute__((unused)) *post_fstring;
     int __attribute__((unused)) end_replace_index;
+    short int flipswitch_percentagesign;
+    int __attribute__((unused)) process_string;
+    int stringlen;
     /*End of va_arg Value holders */
 
-    int __attribute__((unused)) process_string;
     int curr_str_index = 0;
 
     int pos_percent_sign = 0;
 
     int percent_sign_track_index = 0;
     int process_string_track_index = 0;
+    int character_counter = 0;
 
-    short int flipswitch_percentagesign;
 
-    int stringlen;
 
     /* Initialize scan flags */
     flipswitch_percentagesign = 1;
@@ -87,7 +96,7 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
         {
 		if (pos_percent_sign > curr_str_index)
 		{
-		    process_string = _strchr(fmt, &process_string_track_index, '%', &curr_str_index );
+		    process_string = _strchr(fmt, &process_string_track_index, '%', &curr_str_index, &character_counter);
 		    if (process_string < 0)
 		    {
 			stringlen = 0;
@@ -116,7 +125,7 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 			if (strcmp(datatype, "integer") == 0)
 			{
 				i = va_arg(ap, int);
-				_print_number(i);
+				_print_number(i, &character_counter);
 				pos_percent_sign += 2;
 				process_string_track_index = pos_percent_sign;
 			}
@@ -124,8 +133,8 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 			else if(strcmp(datatype, "float") == 0)
 			{
 				f = (float) va_arg(ap, double);
-				_print_floats(f);
-				/*_print_number(f);*/
+				/*_print_floats(f);*/
+				_print_number(f, &character_counter);
 				pos_percent_sign += 2;
 				process_string_track_index = pos_percent_sign;
 			}
@@ -134,6 +143,7 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 			{
 				c = (char) va_arg(ap, int);
 				_putchar(c);
+				character_counter += 1;
 				pos_percent_sign += 2;
 				process_string_track_index = pos_percent_sign;
 			}
@@ -147,7 +157,7 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 				 *
 				 */
 				str = va_arg(ap, char *);
-				_puts_recursion(str);
+				_puts_recursion(str, &character_counter);
 				pos_percent_sign += 2;
 				process_string_track_index = pos_percent_sign;
 
@@ -156,7 +166,16 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 			else if(strcmp(datatype, "double") == 0)
 			{
 				d = va_arg(ap, double);
-				_print_floats(d);
+				_print_number(d, &character_counter);
+				/*_print_floats(d);*/
+				pos_percent_sign += 2;
+				process_string_track_index = pos_percent_sign;
+			}
+			/*unsigned integer*/
+			if (strcmp(datatype, "unsigned") == 0)
+			{
+				ui = va_arg(ap, unsigned int);
+				_print_number(ui, &character_counter);
 				pos_percent_sign += 2;
 				process_string_track_index = pos_percent_sign;
 			}
@@ -177,7 +196,7 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 	if (percent_sign_track_index < 0)
 	{
             /* no backslash or % signs found just process the string as is*/
-            process_string = _strchr(fmt, &process_string_track_index, '%', &curr_str_index );
+            process_string = _strchr(fmt, &process_string_track_index, '%', &curr_str_index, &character_counter );
             if (process_string < 0)
             {
                 stringlen = 0;
@@ -189,7 +208,7 @@ int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
     }
 
     va_end(ap);
-    return (_strlen_recursion(fmt));
+    return (character_counter);
 }
 /**
  * switch_on- sets a value to 1

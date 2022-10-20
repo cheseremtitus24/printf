@@ -9,13 +9,14 @@
  * @scan_index: Tracks current position index to scan from
  * @c: source buffer to copy data from
  * @counted: Saves position of the c string
+ * @print_char_counter: tracks number of characters printed by _printf function
  *
  * Description- returns a pointer to the first occurrence of c in string
  *
  * Return: character pointer
  */
 
-int _strchr(char *s, int *scan_index, char c, int *counted)
+int _strchr(char *s, int *scan_index, char c, int *counted, int *print_char_counter)
 {
     /* Return the number of characters that have been written*/
 	int i = *scan_index;
@@ -32,6 +33,7 @@ int _strchr(char *s, int *scan_index, char c, int *counted)
 			return (i);
 		}
 		_putchar(s[i]);
+		*print_char_counter += 1;
 	}
 	if (s[i] == '\0')
     {

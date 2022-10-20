@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  * _strcmp- Compares 2 strings for equality
  * @s1: string to compare against
@@ -53,6 +54,13 @@ char *_identify_datatype(char *fmt, __attribute__((unused)) int pos_percent_sign
 				datatype = "integer";
 				end_replace_index += count;
 				return (datatype);
+			case 'u':              /* char */
+				datatype = "unsigned";
+				end_replace_index += count;
+				return (datatype);
+			default:
+				datatype = NULL;
+				break;
 			
 
 

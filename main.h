@@ -5,17 +5,18 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 /*Basic Helper Functions */
 int _putchar(char c);
 int _strlen_recursion(char *s);
 int _strcmp(char *s1, char *s2);
-int _strchr(char *s, int *scan_index, char c, int *counted);
+int _strchr(char *s, int *scan_index, char c, int *counted, int *print_char_counter);
 char *scan_symbol_strchr(char *s, int *scan_index, char c, int *counted);
-char *_strstr(char *haystack, char *needle);
-void _print_number(int n);
+int _strchr(char *s, int *scan_index, char c, int *counted, int *print_char_counter);
+void _print_number(int n, int *print_counter);
 void _print_floats(float val);
-void _puts_recursion(char *s);
+void _puts_recursion(char *s, int *print_counter);
 int _atoi(char *s);
 /* turn on and off the scanning of forward slashes and percentage sign char's*/
 void switch_off(short int *scan_flag);
