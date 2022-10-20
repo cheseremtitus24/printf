@@ -9,18 +9,12 @@
  */
 int main(void)
 {
-	_printf("Hello %r");
-	_printf("%%");
-
-    /*int len = _printf("Hello %d\n",22);
+    int len = _printf("Hello %%\n");
     printf("length is %d", len);
-
     len = _printf("Hello %c\n",'B');
     printf("length is %d", len);
     len = _printf("Hello %s\n","World");
     printf("length is %d", len);
-
-*/
     /*_printf("%s%s There is nothing to hold you down\n", "Hello", "World");*/
     /*_printf("%c There is nothing to hold you down\n", val);*/
     /*_printf("There is nothing to hold you down %s \n", "Hello");*/

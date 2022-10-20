@@ -183,7 +183,15 @@ if (flipswitch_percentagesign)
 				process_string_track_index = pos_percent_sign;
 			}
 		}
+		else
 		/* No valid datatype found just print as is*/
+		{
+			_puts_recursion("%", &character_counter);
+			_putchar(fmt[pos_percent_sign + 1]);
+			character_counter++;
+			pos_percent_sign += 2;
+			process_string_track_index = pos_percent_sign;
+		}
 
 
 		/* if success in getting and expanding the datatype
