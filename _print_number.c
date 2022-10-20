@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_number - Prints an integer using recursion
+ * _print_number - Prints an integer using recursion
  * @n: Integer to print
  * @print_counter: tracks the number of characters being printed
  * Return - void

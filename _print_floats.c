@@ -3,7 +3,7 @@
 
 /**
  * _print_floats- prints a float as a string
- * @s: float value to print
+ * @val: float value to print
  *
  * Description- outputs a float as a string
  * to function _puts_recursion(s)
@@ -13,7 +13,8 @@
 void _print_floats(float val)
 {
 	char buffer[11];
+
 	gcvt(val, 6, buffer);
 	buffer[10] = 0;
-	write(1, buffer, _strlen_recursion(buffer)+1);
+	write(1, buffer, _strlen_recursion(buffer) + 1);
 }

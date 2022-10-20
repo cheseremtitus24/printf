@@ -16,12 +16,13 @@
  * Return: character pointer
  */
 
-int _strchr(char *s, int *scan_index, char c, int *counted, int *print_char_counter)
+int _strchr(char *s, int *scan_index,
+char c, int *counted, int *print_char_counter)
 {
-    /* Return the number of characters that have been written*/
+	/* Return the number of characters that have been written*/
 	int i = *scan_index;
 
-	if ((int)strlen(s) < 0)
+	if ((int) strlen(s) < 0)
 		return (-1);
 
 	for (; s[i] != '\0' && s[i] != '%'; i++)
@@ -29,20 +30,19 @@ int _strchr(char *s, int *scan_index, char c, int *counted, int *print_char_coun
 		if (s[i] == c)
 		{
 			*counted = i;
-            *scan_index = *counted + 1;
+			*scan_index = *counted + 1;
 			return (i);
 		}
 		_putchar(s[i]);
 		*print_char_counter += 1;
 	}
 	if (s[i] == '\0')
-    {
-        *counted = -1;
-        *scan_index = *counted;
-        return (-1);
-    }
+	{
+		*counted = -1;
+		*scan_index = *counted;
+		return (-1);
+	}
 	*counted = i;
-	return((i - *scan_index));
-
+	return ((i - *scan_index));
 }
 
