@@ -6,7 +6,7 @@
 
 /*foo(fstring,curr_str_index, va_arg(ap, char );
  */
-void _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
+int _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
 {
 	/*
 	 * todo: If the %s is not at index zero
@@ -167,6 +167,7 @@ void _printf(char *fmt, ...)   /* '...' is C syntax for a variadic function */
     }
 
     va_end(ap);
+    return (_strlen_recursion(fmt));
 }
 /**
  * switch_on- sets a value to 1
