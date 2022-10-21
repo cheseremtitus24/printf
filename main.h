@@ -17,6 +17,7 @@ char *scan_symbol_strchr(char *s, int *scan_index, char c, int *counted);
 int _strchr(char *s, int *scan_index, char c,
 int *counted, int *print_char_counter);
 void _print_number(int n, int *print_counter);
+void _print_unsigned_number(unsigned int n, int *print_counter);
 char *gcvt(double number, int ndigit, char *buf);
 void _print_floats(float val, int *prints_counter);
 void _puts_recursion(char *s, int *print_counter);

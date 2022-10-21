@@ -55,6 +55,12 @@ __attribute__((unused)) char *post_string)
 				datatype = "unsigned";
 				end_replace_index += count;
 				return (datatype);
+			case 'p':              /* address of variable*/
+				datatype = NULL;
+				break;
+				datatype = "address";
+				end_replace_index += count;
+				return (datatype);
 			default:
 				datatype = NULL;
 				break;

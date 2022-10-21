@@ -28,6 +28,7 @@ int _printf(char *fmt, ...)
 
 	/*start va_arg Value holders */
 	int __attribute__((unused)) i;
+	int __attribute__((unused)) *iptr;
 	unsigned int __attribute__((unused)) ui;
 	double __attribute__((unused)) d;
 	float __attribute__((unused)) f;
@@ -157,10 +158,24 @@ int _printf(char *fmt, ...)
 					process_string_track_index = pos_percent_sign;
 				}
 				/*unsigned integer*/
-				if (_strcmp(datatype, "unsigned") == 0)
+				else if (_strcmp(datatype, "unsigned") == 0)
 				{
 					ui = va_arg(ap, unsigned int);
-					_print_number(ui, &character_counter);
+					_print_unsigned_number(ui, &character_counter);
+					pos_percent_sign += 2;
+					process_string_track_index = pos_percent_sign;
+				}
+				/*address of Variable*/
+				else if (_strcmp(datatype, "address") == 0)
+				{
+					i = va_arg(ap, int);
+					iptr = &i;
+					/* TODO: Find a proper method to print address of variable
+					 * should involved capturing the datatype and setting a flag
+					 * that will control printing of addresses of any kind of datatype
+					 */
+
+					/*_print_unsigned_number(iptr, &character_counter);*/
 					pos_percent_sign += 2;
 					process_string_track_index = pos_percent_sign;
 				}
