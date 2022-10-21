@@ -44,7 +44,7 @@ __attribute__((unused)) char *post_string)
 				end_replace_index += count;
 				return (datatype);
 			case 'f':              /* float */
-				datatype = "double";
+				datatype = "float";
 				end_replace_index += count;
 				return (datatype);
 			case 'i':              /* integer */

@@ -121,8 +121,7 @@ int _printf(char *fmt, ...)
 				else if (_strcmp(datatype, "float") == 0)
 				{
 					f = (float) va_arg(ap, double);
-					/*_print_floats(f);*/
-					_print_number(f, &character_counter);
+					_print_floats(f, &character_counter);
 					pos_percent_sign += 2;
 					process_string_track_index = pos_percent_sign;
 				}
@@ -153,8 +152,7 @@ int _printf(char *fmt, ...)
 				else if (_strcmp(datatype, "double") == 0)
 				{
 					d = va_arg(ap, double);
-					_print_number(d, &character_counter);
-					/*_print_floats(d);*/
+					_print_floats(f, &character_counter);
 					pos_percent_sign += 2;
 					process_string_track_index = pos_percent_sign;
 				}

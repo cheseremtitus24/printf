@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * _print_floats- prints a float as a string
@@ -10,11 +11,14 @@
  *
  * Return: void
  */
-void _print_floats(float val)
+void _print_floats(float val, int *prints_counter)
 {
 	char buffer[11];
+	int slen;
 
 	gcvt(val, 6, buffer);
 	buffer[10] = 0;
-	write(1, buffer, _strlen_recursion(buffer) + 1);
+	slen = _strlen_recursion(buffer) + 1;
+	write(1, buffer, slen);
+	*prints_counter += slen - 1;
 }
