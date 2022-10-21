@@ -10,41 +10,6 @@
 int main(void)
 {
     int len;
-    /*= _printf("Hello %%\n");
-    printf("length is %d", len);
-    len = _printf("Hello %c\n",'B');
-    printf("length is %d", len);
-    len = _printf("Hello %s\n","World");
-    printf("length is %d", len);
-    */
-    len = _printf("Hello %f\n",2.222);
-    printf("length is %d", len);
-    /*_printf("%s%s There is nothing to hold you down\n", "Hello", "World");*/
-    /*_printf("%c There is nothing to hold you down\n", val);*/
-    /*_printf("There is nothing to hold you down %s \n", "Hello");*/
-    /*_printf("There is nothing  %s to hold you down %s \n", "Hello", "World");*/
-    /*_printf("There is %d nothing to hold you down\n", 22);*/
-
-    /*_printf("\\We are the ones %s two %s \\wiki", "Hello", "World");*/
-
-    /*char *f;
-    unsigned int curr_str_index = 0;
-
-    f = _strchr(s, '%', &curr_str_index );
-
-    if (f != NULL)
-    {
-        printf("%s\n current position: %d", f, curr_str_index);
-        // call  format specifier with args of current str index and first arg index of e.g replace number/string
-        foo(f,curr_str_index, va_arg(ap, char *);
-        //function parses and prints the format and returns the proper position of string index after reading and outputting.
-    }
-     */
-
-
-
-    /*
-    int len;
     int len2;
     unsigned int ui;
     void *addr;
@@ -73,8 +38,8 @@ int main(void)
     len2 = printf("Percent:[%%]\n");
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
+    /*_printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
-     */
+    */
     return (0);
 }

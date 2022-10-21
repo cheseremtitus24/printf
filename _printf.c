@@ -169,10 +169,20 @@ int _printf(char *fmt, ...)
 		/* No valid datatype found just print as is*/
 		{
 			_puts_recursion("%", &character_counter);
-			_putchar(fmt[pos_percent_sign + 1]);
-			character_counter++;
-			pos_percent_sign += 2;
-			process_string_track_index = pos_percent_sign;
+			if ('%' == fmt[pos_percent_sign + 1])
+			{
+				/* Skip a %% and only print a single 1*/
+				pos_percent_sign += 2;
+				process_string_track_index = pos_percent_sign;
+
+			}
+			else
+			{
+				_putchar(fmt[pos_percent_sign + 1]);
+				character_counter++;
+				pos_percent_sign += 2;
+				process_string_track_index = pos_percent_sign;
+			}
 		}
 
 
